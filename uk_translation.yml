@@ -1,0 +1,3 @@
+files:
+  - source: /lms/blob/main/README.md
+    translation: lms/%two_letters_code%/%original_file_name%
