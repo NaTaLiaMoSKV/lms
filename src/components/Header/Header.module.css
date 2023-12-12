@@ -1,0 +1,38 @@
+header {
+    background-color: #191D23;
+    margin: 0;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.headerContainer {
+    margin: 0 20px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.logoText,
+.headerUserText {
+    color: #dedcdc;
+    letter-spacing: 0.03em;
+
+}
+
+.userImageWrapper {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #dedcdc;
+}
+
+.logoImage,
+.userImage {
+    width: 40px;
+    height: 40px;
+}

@@ -36,6 +36,7 @@ input {
 }
 
 .errorMessage {
+    margin-left: 8px;
     padding-top: 3px;
     width: 350px;
     font-size: 13px;
