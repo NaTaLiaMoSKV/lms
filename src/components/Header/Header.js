@@ -1,9 +1,6 @@
-import css from './Header.module.css'
-import logoImage from '../../images/logo512.png'
-import userImage from '../../images/user1.jpg'
 
 export default function Header() {
-    const adminName = 'Natalia';
+    // const adminName = 'Natalia';
 
     return (
         <header>

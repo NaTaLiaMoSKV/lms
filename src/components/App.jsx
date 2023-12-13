@@ -7,7 +7,6 @@ import RestrictedRoute from './RestrictedRoute/RestrictedRoute';
 import HomePage from '../pages/HomePage/HomePage';
 import AuthPage from '../pages/AuthPage/AuthPage';
 import WelcomePage from 'pages/WelcomePage/WelcomePage';
-import Hello from 'Hello/Hello';
 import AdminDashboard from './AdminDashboard/AdminDashboard';
 
 export const App = () => {
@@ -26,7 +25,7 @@ export const App = () => {
             <Route path='teachers' element={<AdminDashboard section={'teachers'}/>}></Route>
             
           </Route>
-          {/* <Route path='*' element={<RestrictedRoute component={WelcomePage} />} /> */}
+          <Route path='*' element={<RestrictedRoute component={WelcomePage} />} />
         </Route>
       </Routes>
     </>
