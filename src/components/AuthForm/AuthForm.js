@@ -98,9 +98,9 @@ export default function AuthForm() {
                 
                 <button className={css.submitButton} type="submit">Submit</button>
                 
-                <NavLink to='/dashboard/student'>Student</NavLink>
-                <NavLink to='/dashboard/teacher'>Teacher</NavLink>
-                <NavLink to='/dashboard/admin'>Admin</NavLink>
+                <NavLink to='/home/student'>Student</NavLink>
+                <NavLink to='/home/teacher'>Teacher</NavLink>
+                <NavLink to='/home/admin/dashboard'>Admin</NavLink>
             </form>
         </div>
     )

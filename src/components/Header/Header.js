@@ -7,7 +7,7 @@ export default function Header() {
 
     return (
         <header>
-            <div className={css.headerContainer}>
+            {/* <div className={css.headerContainer}>
                 <img className={css.logoImage} src={logoImage} alt='logo' />
                 <h1 className={css.logoText} >LMS</h1>
             </div>
@@ -16,7 +16,7 @@ export default function Header() {
                 <div className={css.userImageWrapper}>
                     <img className={css.userImage} src={userImage} alt='user' />
                 </div>
-            </div>          
+            </div>           */}
         </header>
     )
 }

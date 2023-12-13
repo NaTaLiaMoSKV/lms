@@ -1,0 +1,47 @@
+.sidebarLogoContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #282828;
+}
+
+.sidebarAdminContainer {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.sidebarAdminText {
+    color: #282828;
+    font-size: 15px;
+    letter-spacing: 0.05em;
+}
+
+.sidebarAdminName {
+    margin: 10px 0;
+    color: #282828;
+    letter-spacing: 0.03em;
+}
+
+.sidebarAdminJob {
+    color: #282828;
+    font-size: 14px;
+    letter-spacing: 0.03em;
+}
+
+.sidebarAdminWrapper {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #28282890;
+}
+
+.adminImage {
+    width: 47px;
+    height: 47px;
+}
