@@ -7,7 +7,7 @@ import RestrictedRoute from './RestrictedRoute/RestrictedRoute';
 import HomePage from '../pages/HomePage/HomePage';
 import AuthPage from '../pages/AuthPage/AuthPage';
 import WelcomePage from 'pages/WelcomePage/WelcomePage';
-import AdminDashboard from './AdminDashboard/AdminDashboard';
+import AdminDashboard from './AdminComponents/AdminDashboard/AdminDashboard';
 
 export const App = () => {
 

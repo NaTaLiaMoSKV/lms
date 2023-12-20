@@ -1,4 +1,4 @@
-import AdminDashboard from "components/AdminDashboard/AdminDashboard"
+import AdminDashboard from "components/AdminComponents/AdminDashboard/AdminDashboard"
 import StudentDashboard from "components/StudentDashboard/StudentDashboard"
 import TeacherDashboard from "components/TeacherDashboard/TeacherDashboard"
 import { useParams } from "react-router-dom"

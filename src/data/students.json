@@ -1,0 +1,88 @@
+[
+  {
+    "id": "0c89d0b1-3c67-4b18-8e28-71e01c715f38",
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "age": "19",
+    "registrationDate": "Sun Jan 01 2023 08:15:30 GMT+0000 (Coordinated Universal Time)",
+    "completedCourses": [
+      "Introduction to Programming",
+      "Web Development Basics"
+    ]
+  },
+  {
+    "id": "4e7f3a90-aa6c-49f7-87a1-651c3cb17aa1",
+    "name": "Alice Smith",
+    "email": "alice.smith@example.com",
+    "age": "22",
+    "registrationDate": "2021/06/23 15:42:18",
+    "completedCourses": ["Data Science Fundamentals", "Python for Beginners"]
+  },
+  {
+    "id": "8c02d46a-874d-4b68-9f04-f5a7d2abbc92",
+    "name": "Eva Brown",
+    "email": "eva.brown@example.com",
+    "age": "25",
+    "registrationDate": "2021/06/23 15:42:18",
+    "completedCourses": ["JavaScript Basics", "React Fundamentals"]
+  },
+  {
+    "id": "b7f90e8a-c66b-45e8-b08d-5e079c795aad",
+    "name": "Michael Johnson",
+    "email": "michael.johnson@example.com",
+    "age": "18",
+    "registrationDate": "2021/06/23 15:42:18",
+    "completedCourses": ["Database Design", "SQL Mastery"]
+  },
+  {
+    "id": "2a49f865-dba1-4f18-a3b2-5ea260318d64",
+    "name": "Sophia White",
+    "email": "sophia.white@example.com",
+    "age": "27",
+    "registrationDate": "2021/06/23 15:42:18",
+    "completedCourses": [
+      "Artificial Intelligence Essentials",
+      "Machine Learning Basics"
+    ]
+  },
+  {
+    "id": "fa00ef50-0e0a-4819-8a46-569d0e0143c6",
+    "name": "Daniel Taylor",
+    "email": "daniel.taylor@example.com",
+    "age": "32",
+    "registrationDate": "2021/06/23 15:42:18",
+    "completedCourses": ["Ethical Hacking", "Cybersecurity Fundamentals"]
+  },
+  {
+    "id": "5c064e5a-2f02-45c7-9635-bb0e0a3e5d5b",
+    "name": "Olivia Miller",
+    "email": "olivia.miller@example.com",
+    "age": "29",
+    "registrationDate": "2021/06/23 15:42:18",
+    "completedCourses": ["Mobile App Development", "iOS Programming"]
+  },
+  {
+    "id": "e58a34cc-694b-48f9-946a-d7cf45b7a2ef",
+    "name": "Liam Wilson",
+    "email": "liam.wilson@example.com",
+    "age": "36",
+    "registrationDate": "2021/06/23 15:42:18",
+    "completedCourses": ["Java Programming", "Software Architecture"]
+  },
+  {
+    "id": "34a30a19-42ce-4d4a-8da4-6182fbfae1f3",
+    "name": "Ava Martinez",
+    "email": "ava.martinez@example.com",
+    "age": "30",
+    "registrationDate": "2021/06/23 15:42:18",
+    "completedCourses": ["UI/UX Design", "Frontend Development"]
+  },
+  {
+    "id": "a5f6a5e9-1a1c-4e7b-8a3f-1f19e460f6a4",
+    "name": "Noah Davis",
+    "email": "noah.davis@example.com",
+    "age": "27",
+    "registrationDate": "2021/06/23 15:42:18",
+    "completedCourses": ["Project Management", "Agile Methodology"]
+  }
+]

@@ -1,6 +1,7 @@
 import { useLocation, useParams } from "react-router-dom";
-import AdminSidebar from "components/AdminSidebar/AdminSidebar";
+import AdminSidebar from "components/AdminComponents/AdminSidebar/AdminSidebar";
 import Header from "components/Header/Header";
+import StudentsPage from "../StudentsPage/StudentsPage";
 
 export default function AdminDashboard({ section }) {
     const { pathname } = useLocation();
@@ -10,7 +11,7 @@ export default function AdminDashboard({ section }) {
         <>
             <div style={{ display: 'flex', width: '100vw', height: '100vh'}}>
                 <AdminSidebar  />
-                <div style={{ backgroundColor: '#fafafa', flex: 1 }}>
+                <div className="content" style={{ backgroundColor: '#fafafa', flex: 1 }}>
                     <Header />
                     {(() => {
                         switch (pathname) {
@@ -36,14 +37,14 @@ export default function AdminDashboard({ section }) {
                                 );
                             case `/home/${userType}/students`:
                                 return (
-                                <>
-                                    <h1>STUDENTS</h1>
-                                </>
+                                <div >
+                                    <StudentsPage />
+                                </div>
                                 );
                             case `/home/${userType}/teachers`:
                                 return (
                                 <>
-                                    <h1>TEACHERS</h1>
+                                        <h1>TEACHERS</h1>
                                 </>
                                 );
                             default:

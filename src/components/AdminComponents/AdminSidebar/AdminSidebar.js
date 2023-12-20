@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
 
@@ -10,7 +10,7 @@ import { RiHome4Line } from "react-icons/ri";
 
 import styled from 'styled-components';
 import css from './AdminSidebar.module.css'
-import userImage from '../../images/user1.jpg'
+import userImage from '../../../images/user1.jpg'
 
 
 const StyledNavLink = styled(NavLink)`
@@ -30,8 +30,16 @@ export default function AdminSidebar() {
     
     const adminName = 'Natalia';
 
-    const handleCollapsedChange = () => {
+    useEffect(() => {
+        document.body.classList.add('sidebar-open');
+    }, [])
+    
+
+    const handleCollapsedChange = (status) => {
         setCollapsed(!collapsed);
+        document.body.classList.toggle('sidebar-open');
+        // if (status === 'open') document.body.classList.add('sidebar-open');
+        // else if (status === 'close') document.body.classList.remove('sidebar-open');
     };
     const handleToggleSidebar = (value) => {
         setToggled(value);
@@ -41,7 +49,7 @@ export default function AdminSidebar() {
         <div>
         <Sidebar
             className={`app ${toggled ? "toggled" : ""}`}
-                style={{
+            style={{
                 backgroundColor: '#fafafa',
                 height: "100%",
                 flexGrow: 1,
@@ -56,7 +64,7 @@ export default function AdminSidebar() {
                     {collapsed ?(
                         <MenuItem
                             icon={<SlArrowRight />}
-                            onClick={() => setCollapsed(!collapsed)}
+                            onClick={() => handleCollapsedChange('open')}
                             style={{  borderBottom: '1px solid #dcdcdc', height: '200px' }}
                         >
                         </MenuItem>
@@ -64,7 +72,7 @@ export default function AdminSidebar() {
                         <MenuItem
                             style={{borderBottom: '1px solid #dcdcdc', height: '200px', padding: '10px 20px' }}
                             suffix={<SlArrowLeft />}
-                            onClick={handleCollapsedChange}
+                            onClick={() => handleCollapsedChange('close')}
                         >
                             <div className={css.headerMenuItem}>
                                 <div className={css.headerContainer}>

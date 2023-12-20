@@ -2,11 +2,25 @@
 
 body {
   margin: 0;
+  overflow-x: hidden;
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #282828;
 }
+
+.content {
+  /* background-color: red; */
+  width: calc(100vw - 85px);
+}
+
+body.sidebar-open .content {
+  width: calc(100vw - 255px);
+}
+
+/* #context {
+  width: calc(100vw - 1000px);
+} */
 
 ul, li, h1, h2, h3, h4, h5, h6, p {
   margin: 0;
