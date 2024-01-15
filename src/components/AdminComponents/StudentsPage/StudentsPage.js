@@ -1,42 +1,17 @@
 import { useState } from 'react';
 
 import Box from '@mui/material/Box';
-// import Button from '@mui/material/Button';
-// import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/DeleteOutlined';
 import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from '@mui/icons-material/Close';
-
+import { IoMdAdd } from "react-icons/io";
 import { GridRowModes, DataGrid, GridActionsCellItem, GridRowEditStopReasons, GridToolbar } from '@mui/x-data-grid';
-// import { randomId } from '@mui/x-data-grid-generator';
 
+import './StudentsPage.css'
 import studentsData from '../../../data/students.json'
 
-
 const initialRows = studentsData;
-
-// function EditToolbar(props) {
-//     console.log(props);
-//     const { setRows, setRowModesModel } = props;
-
-//     const handleClick = () => {
-//         const id = randomId();
-//         setRows((oldRows) => [ { id, name: '', age: '', isNew: true }, ...oldRows ]);
-//         setRowModesModel((oldModel) => ({
-//             ...oldModel,
-//             [id]: { mode: GridRowModes.Edit, fieldToFocus: 'name' },
-//         }));
-//     };
-
-//     return (
-//         <GridToolbarContainer>
-//             <Button startIcon={<AddIcon />} onClick={handleClick}>
-//                 Add record
-//             </Button>
-//         </GridToolbarContainer>
-//     );
-// }
 
 export default function StudentsPage() {
     const [rows, setRows] = useState(initialRows);
@@ -124,7 +99,7 @@ export default function StudentsPage() {
             field: 'completedCourses',
             headerName: 'Completed Courses',
             width: 300,
-            editable: true,
+            editable: false,
             sortable: false,
             valueGetter: (params) => {
                 return params.value.toString().replace(/,/g, ', ');
@@ -178,26 +153,35 @@ export default function StudentsPage() {
     return (
         <Box m={'20px'}
             sx={{
-                height: 500,
+                display: 'flex',
+                flexDirection: 'column',
+                height: '100vh',
                 "& .MuiButtonBase-root": {
                     color: "#191d23",
                 },
+                margin: 0,
             }}
         >
-            <h1>Students</h1>
-            {/* <EditToolbar /> */}
-            {/* <h4>List of users registered in the system</h4> */}
+            <div className='studentsTitleContainer'>
+                <h1>Students</h1>
+                <button className='addButton'>
+                    <IoMdAdd style={{width: '20px', height: '20px', marginRight: '5px'}}/>
+                    Add new student
+                </button>
+
+            </div>
             <DataGrid
                 initialState={{
                     sorting: {
                         sortModel: [{ field: 'name', sort: 'asc' }],
                     },
-                    
                 }}
                 sx={{
                     boxShadow: 2,
                     border: 1,
-                    borderColor: '#57707a'
+                    flex: 1,
+                    borderColor: '#57707a',
+                    margin: '10px 30px 15px'
                 }}
                 slots={{
                     toolbar: GridToolbar, 
@@ -214,13 +198,8 @@ export default function StudentsPage() {
                 onRowModesModelChange={handleRowModesModelChange}
                 onRowEditStop={handleRowEditStop}
                 processRowUpdate={processRowUpdate}
-                // slots={{
-                //     toolbar: EditToolbar,
-                // }}
-                // slotProps={{
-                //     toolbar: { setRows, setRowModesModel },
-                // }}
             />
         </Box>
+        
     );
 }

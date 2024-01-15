@@ -37,14 +37,14 @@ export default function AdminDashboard({ section }) {
                                 );
                             case `/home/${userType}/students`:
                                 return (
-                                <div >
+                                <>
                                     <StudentsPage />
-                                </div>
+                                </>
                                 );
                             case `/home/${userType}/teachers`:
                                 return (
                                 <>
-                                        <h1>TEACHERS</h1>
+                                    <h1>TEACHERS</h1>
                                 </>
                                 );
                             default:

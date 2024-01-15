@@ -12,10 +12,25 @@ import styled from 'styled-components';
 import css from './AdminSidebar.module.css'
 import userImage from '../../../images/user1.jpg'
 
-
 const StyledNavLink = styled(NavLink)`
-  color: ${props => (props.isActive ? '#CB1A24' : '#282828')};
-  text-decoration: none;
+    color: ${props => (props.isActive ? '#CB1A24' : '#282828')};
+    text-decoration: none;
+    display: flex;
+    width: 230px;
+    padding: 20px;
+`;
+
+const StyledMenuItem = styled(MenuItem)`
+    a.ps-menu-button {
+        padding: 0;
+        margin: 0;
+        width: 250px;
+    }
+    .ps-menu-label {
+        display: flex;
+        align-items:center;
+        height: 50px;
+    }
 `;
 
 const StyledIcon = styled.span`
@@ -33,7 +48,6 @@ export default function AdminSidebar() {
     useEffect(() => {
         document.body.classList.add('sidebar-open');
     }, [])
-    
 
     const handleCollapsedChange = (status) => {
         setCollapsed(!collapsed);
@@ -41,6 +55,7 @@ export default function AdminSidebar() {
         // if (status === 'open') document.body.classList.add('sidebar-open');
         // else if (status === 'close') document.body.classList.remove('sidebar-open');
     };
+    
     const handleToggleSidebar = (value) => {
         setToggled(value);
     };
@@ -91,36 +106,36 @@ export default function AdminSidebar() {
                 </Menu>
 
                 <Menu>
-                    <MenuItem>
+                    <StyledMenuItem>
                         <StyledNavLink to='/home/admin/dashboard' isActive={location.pathname === '/home/admin/dashboard'}>
                             <RiHome4Line style={{marginRight: '10px', marginLeft: '10px'}} />
                             <StyledIcon isActive={location.pathname === '/home/admin/dashboard'}>Dashboard</StyledIcon>
                         </StyledNavLink>
-                    </MenuItem>
-                    <MenuItem>
+                    </StyledMenuItem>
+                    <StyledMenuItem>
                         <StyledNavLink to='/home/admin/courses' isActive={location.pathname === '/home/admin/courses'}>
                             <TfiAgenda style={{marginRight: '10px', marginLeft: '10px'}} />
                             <StyledIcon isActive={location.pathname === '/home/admin/courses'}>Courses</StyledIcon>
                         </StyledNavLink>
-                    </MenuItem>
-                    <MenuItem>
+                    </StyledMenuItem>
+                    <StyledMenuItem>
                         <StyledNavLink to='/home/admin/groups' isActive={location.pathname === '/home/admin/groups'}>
                             <HiOutlineUserGroup style={{marginRight: '10px', marginLeft: '10px'}} />
                             <StyledIcon isActive={location.pathname === '/home/admin/groups'}>Groups</StyledIcon>
                         </StyledNavLink>
-                    </MenuItem>
-                    <MenuItem>
+                    </StyledMenuItem>
+                    <StyledMenuItem>
                         <StyledNavLink to='/home/admin/students' isActive={location.pathname === '/home/admin/students'}>
                             <PiStudentLight style={{marginRight: '10px', marginLeft: '10px'}} />
                             <StyledIcon isActive={location.pathname === '/home/admin/students'}>Students</StyledIcon>
                         </StyledNavLink>
-                    </MenuItem>
-                    <MenuItem>
+                    </StyledMenuItem>
+                    <StyledMenuItem>
                         <StyledNavLink to='/home/admin/teachers' isActive={location.pathname === '/home/admin/teachers'}>
                             <PiChalkboardTeacherLight style={{marginRight: '10px', marginLeft: '10px'}} />
                             <StyledIcon isActive={location.pathname === '/home/admin/teachers'}>Teachers</StyledIcon>
                         </StyledNavLink>
-                    </MenuItem>
+                    </StyledMenuItem>
                 </Menu>
             </main>
         </Sidebar>
