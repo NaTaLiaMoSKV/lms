@@ -9,7 +9,7 @@
     gap: 20px;
 }
 
-input {
+.authFormInput {
     width: 350px;
     padding: 8px;
     border: none;

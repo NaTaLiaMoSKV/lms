@@ -2,6 +2,7 @@ import { useLocation, useParams } from "react-router-dom";
 import AdminSidebar from "components/AdminComponents/AdminSidebar/AdminSidebar";
 import Header from "components/Header/Header";
 import StudentsPage from "../StudentsPage/StudentsPage";
+import TeachersPage from "../TeachersPage/TeachersPage";
 
 export default function AdminDashboard({ section }) {
     const { pathname } = useLocation();
@@ -44,7 +45,7 @@ export default function AdminDashboard({ section }) {
                             case `/home/${userType}/teachers`:
                                 return (
                                 <>
-                                    <h1>TEACHERS</h1>
+                                    <TeachersPage />
                                 </>
                                 );
                             default:

@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "age": 35,
+    "specialty": "Mathematics",
+    "totalCourses": 20,
+    "startYear": 2010,
+    "currentCourses": 3
+  },
+  {
+    "id": 2,
+    "name": "Jane Smith",
+    "email": "jane.smith@example.com",
+    "age": 40,
+    "specialty": "Physics",
+    "totalCourses": 15,
+    "startYear": 2015,
+    "currentCourses": 2
+  },
+  {
+    "id": 3,
+    "name": "Michael Johnson",
+    "email": "michael.johnson@example.com",
+    "age": 38,
+    "specialty": "Chemistry",
+    "totalCourses": 18,
+    "startYear": 2012,
+    "currentCourses": 4
+  },
+  {
+    "id": 4,
+    "name": "Emily Davis",
+    "email": "emily.davis@example.com",
+    "age": 32,
+    "specialty": "English",
+    "totalCourses": 12,
+    "startYear": 2014,
+    "currentCourses": 1
+  },
+  {
+    "id": 5,
+    "name": "Daniel White",
+    "email": "daniel.white@example.com",
+    "age": 45,
+    "specialty": "Biology",
+    "totalCourses": 25,
+    "startYear": 2008,
+    "currentCourses": 5
+  },
+  {
+    "id": 6,
+    "name": "Olivia Lee",
+    "email": "olivia.lee@example.com",
+    "age": 37,
+    "specialty": "History",
+    "totalCourses": 14,
+    "startYear": 2016,
+    "currentCourses": 2
+  },
+  {
+    "id": 7,
+    "name": "William Turner",
+    "email": "william.turner@example.com",
+    "age": 42,
+    "specialty": "Computer Science",
+    "totalCourses": 22,
+    "startYear": 2011,
+    "currentCourses": 3
+  },
+  {
+    "id": 8,
+    "name": "Sophia Rodriguez",
+    "email": "sophia.rodriguez@example.com",
+    "age": 33,
+    "specialty": "Art",
+    "totalCourses": 17,
+    "startYear": 2013,
+    "currentCourses": 2
+  }
+]

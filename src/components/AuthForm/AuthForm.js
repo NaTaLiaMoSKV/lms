@@ -53,6 +53,7 @@ export default function AuthForm() {
                 <div className={css.formInputContainer}>
                     <input
                         id="name"
+                        className="authFormInput"
                         name="name"
                         type="text"
                         placeholder="Name"
@@ -65,6 +66,7 @@ export default function AuthForm() {
                 <div className={css.formInputContainer}>
                     <input
                         id="email"
+                        className="authFormInput"
                         name="email"
                         type="email"
                         placeholder='Email'
@@ -77,6 +79,7 @@ export default function AuthForm() {
                 <div className={css.formInputContainer}>
                     <input
                         id="password"
+                        className="authFormInput"
                         name="password"
                         type={showPassword ? 'text' : 'password'}
                         placeholder="Password"
