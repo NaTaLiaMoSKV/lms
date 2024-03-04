@@ -3,6 +3,7 @@ import AdminSidebar from "components/AdminComponents/AdminSidebar/AdminSidebar";
 import Header from "components/Header/Header";
 import StudentsPage from "../StudentsPage/StudentsPage";
 import TeachersPage from "../TeachersPage/TeachersPage";
+import CoursesPage from "../CoursesPage/CoursesPage";
 
 export default function AdminDashboard({ section }) {
     const { pathname } = useLocation();
@@ -27,7 +28,8 @@ export default function AdminDashboard({ section }) {
                                 return (
                                 <>
                                     {/* <Header /> */}
-                                    <h1>COURSE</h1>
+                                        {/* <h1>COURSE</h1> */}
+                                        <CoursesPage />
                                 </>
                                 );
                             case `/home/${userType}/groups`:

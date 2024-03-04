@@ -1,0 +1,129 @@
+[
+  {
+    "id": 1,
+    "courseTitle": "Course 1",
+    "courseDescription": "Description for Course 1",
+    "specialty": "English",
+    "courseSections": [
+      {
+        "sectionName": "Introduction",
+        "sectionDescription": "Description for Introduction",
+        "sectionSummary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque auctor, quam sit amet congue condimentum, nisi elit dapibus nisl, eu egestas justo augue vel mauris. Suspendisse potenti. Phasellus convallis, libero ac efficitur lacinia, metus nulla facilisis ex, a luctus odio dui vel arcu. Curabitur consequat euismod ipsum at vestibulum.",
+        "additionalMaterials": [
+          "Link 1 for Introduction",
+          "Link 2 for Introduction"
+        ]
+      },
+      {
+        "sectionName": "Advanced",
+        "sectionDescription": "Description for Advanced",
+        "sectionSummary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque auctor, quam sit amet congue condimentum, nisi elit dapibus nisl, eu egestas justo augue vel mauris. Suspendisse potenti. Phasellus convallis, libero ac efficitur lacinia, metus nulla facilisis ex, a luctus odio dui vel arcu. Curabitur consequat euismod ipsum at vestibulum.",
+        "additionalMaterials": ["Link 1 for Advanced", "Link 2 for Advanced"]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "courseTitle": "Course 2",
+    "courseDescription": "Description for Course 2",
+    "specialty": "Biology",
+    "courseSections": [
+      {
+        "sectionName": "Fundamentals",
+        "sectionDescription": "Description for Fundamentals",
+        "sectionSummary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque auctor, quam sit amet congue condimentum, nisi elit dapibus nisl, eu egestas justo augue vel mauris. Suspendisse potenti. Phasellus convallis, libero ac efficitur lacinia, metus nulla facilisis ex, a luctus odio dui vel arcu. Curabitur consequat euismod ipsum at vestibulum.",
+        "additionalMaterials": [
+          "Link 1 for Fundamentals",
+          "Link 2 for Fundamentals"
+        ]
+      },
+      {
+        "sectionName": "Specialization",
+        "sectionDescription": "Description for Specialization",
+        "sectionSummary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque auctor, quam sit amet congue condimentum, nisi elit dapibus nisl, eu egestas justo augue vel mauris. Suspendisse potenti. Phasellus convallis, libero ac efficitur lacinia, metus nulla facilisis ex, a luctus odio dui vel arcu. Curabitur consequat euismod ipsum at vestibulum.",
+        "additionalMaterials": [
+          "Link 1 for Specialization",
+          "Link 2 for Specialization"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "courseTitle": "Course 3",
+    "courseDescription": "Description for Course 3 ",
+    "specialty": "Computer Science",
+    "courseSections": [
+      {
+        "sectionName": "Fundamentals",
+        "sectionDescription": "Description for Fundamentals",
+        "sectionSummary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque auctor, quam sit amet congue condimentum, nisi elit dapibus nisl, eu egestas justo augue vel mauris. Suspendisse potenti. Phasellus convallis, libero ac efficitur lacinia, metus nulla facilisis ex, a luctus odio dui vel arcu. Curabitur consequat euismod ipsum at vestibulum.",
+        "additionalMaterials": [
+          "Link 1 for Fundamentals",
+          "Link 2 for Fundamentals"
+        ]
+      },
+      {
+        "sectionName": "Specialization",
+        "sectionDescription": "Description for Specialization",
+        "sectionSummary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque auctor, quam sit amet congue condimentum, nisi elit dapibus nisl, eu egestas justo augue vel mauris. Suspendisse potenti. Phasellus convallis, libero ac efficitur lacinia, metus nulla facilisis ex, a luctus odio dui vel arcu. Curabitur consequat euismod ipsum at vestibulum.",
+        "additionalMaterials": [
+          "Link 1 for Specialization",
+          "Link 2 for Specialization"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "courseTitle": "Course 4",
+    "courseDescription": "Description for Course 4",
+    "specialty": "English",
+    "courseSections": [
+      {
+        "sectionName": "Fundamentals",
+        "sectionDescription": "Description for Fundamentals",
+        "sectionSummary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque auctor, quam sit amet congue condimentum, nisi elit dapibus nisl, eu egestas justo augue vel mauris. Suspendisse potenti. Phasellus convallis, libero ac efficitur lacinia, metus nulla facilisis ex, a luctus odio dui vel arcu. Curabitur consequat euismod ipsum at vestibulum.",
+        "additionalMaterials": [
+          "Link 1 for Fundamentals",
+          "Link 2 for Fundamentals"
+        ]
+      },
+      {
+        "sectionName": "Specialization",
+        "sectionDescription": "Description for Specialization",
+        "sectionSummary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque auctor, quam sit amet congue condimentum, nisi elit dapibus nisl, eu egestas justo augue vel mauris. Suspendisse potenti. Phasellus convallis, libero ac efficitur lacinia, metus nulla facilisis ex, a luctus odio dui vel arcu. Curabitur consequat euismod ipsum at vestibulum.",
+        "additionalMaterials": [
+          "Link 1 for Specialization",
+          "Link 2 for Specialization"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "courseTitle": "Course 5",
+    "courseDescription": "Description for Course 5",
+    "specialty": "Computer Science",
+    "courseSections": [
+      {
+        "sectionName": "Fundamentals",
+        "sectionDescription": "Description for Fundamentals",
+        "sectionSummary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque auctor, quam sit amet congue condimentum, nisi elit dapibus nisl, eu egestas justo augue vel mauris. Suspendisse potenti. Phasellus convallis, libero ac efficitur lacinia, metus nulla facilisis ex, a luctus odio dui vel arcu. Curabitur consequat euismod ipsum at vestibulum.",
+        "additionalMaterials": [
+          "Link 1 for Fundamentals",
+          "Link 2 for Fundamentals"
+        ]
+      },
+      {
+        "sectionName": "Specialization",
+        "sectionDescription": "Description for Specialization",
+        "sectionSummary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque auctor, quam sit amet congue condimentum, nisi elit dapibus nisl, eu egestas justo augue vel mauris. Suspendisse potenti. Phasellus convallis, libero ac efficitur lacinia, metus nulla facilisis ex, a luctus odio dui vel arcu. Curabitur consequat euismod ipsum at vestibulum.",
+        "additionalMaterials": [
+          "Link 1 for Specialization",
+          "Link 2 for Specialization"
+        ]
+      }
+    ]
+  }
+]

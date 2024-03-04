@@ -136,7 +136,7 @@ export default function StudentsPage() {
                             validationSchema={validationSchema}
                             onSubmit={handleSubmit}
                         >
-                            {({ isSubmitting, isValid }) => (
+                            {/* {({ isSubmitting, isValid }) => ( */}
                                 <Form style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}} >
                                     <div className={css.formInputContainer}>
                                         <Field
@@ -171,9 +171,10 @@ export default function StudentsPage() {
                                         <ErrorMessage name="date" component="div" className={css.errorMessage} />
                                     </div>
 
-                                    <button className='addStudentSubmitButton' disabled={isSubmitting || !isValid} type="submit">Submit</button>
+                                    <button className='addStudentSubmitButton' type="submit">Submit</button>
+                                    {/* <button className='addStudentSubmitButton' disabled={isSubmitting || !isValid} type="submit">Submit</button> */}
                                 </Form>
-                            )}
+                            {/* )} */}
                         </Formik>
                     </Box>
                 </Modal>

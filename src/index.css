@@ -6,6 +6,8 @@ body {
   font-family: 'Helvetica', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: sans-serif;
+  line-height: 1.5;
   color: #282828;
 }
 
@@ -22,6 +24,10 @@ ul, li, h1, h2, h3, h4, h5, h6, p {
   padding: 0;
 }
 
+ul, li {
+   list-style-type: none;
+}
+
 a { 
   color: inherit;
 }
@@ -31,8 +37,9 @@ button {
 }
 
 img {
-  width: 100%;
   display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 
