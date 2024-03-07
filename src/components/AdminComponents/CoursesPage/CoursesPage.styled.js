@@ -110,6 +110,11 @@ export const ModalSelectField = styled.select`
     font-size: 15px;
     font-weight: 500;
     letter-spacing: 0.04em;
+
+    & option {
+        font-size: 14px;
+        letter-spacing: 0.08em;
+    }
 `
 
 export const CustomErrorMessage = styled.div`
@@ -122,6 +127,28 @@ export const CustomErrorMessage = styled.div`
 export const ModalSectionList = styled.ul`
     width: 100%;
     margin: 15px 0;
+    max-height: 250px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scroll-margin: 10px;
+
+    &::-webkit-scrollbar {
+        width: 10px;
+        padding-left: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #f1f1f1; 
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background-color: #888; 
+        transition: background-color 0.3s linear;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: #555; 
+    }
 
     & li:not(:last-child) {
         margin-bottom: 10px;
@@ -130,6 +157,7 @@ export const ModalSectionList = styled.ul`
 
 export const ModalSectionItem = styled.li`
     display: flex;
+    width: 360px;
     justify-content: space-between;
     align-items: center;
     background-color: #EEEEEE;
@@ -168,7 +196,7 @@ export const ModalFormButton = styled.button`
     letter-spacing: 0.02857em;
     text-transform: uppercase;
     padding: 6px 8px;
-    border-radius: 4px;
+    border-radius: 10px;
     color: #191d23;
     transition: all 0.3s ease;
 
@@ -181,6 +209,11 @@ export const ModalFormButton = styled.button`
     &[attr="save"] {
         background-color: #2eb82e90;
     }
+    
+    &[attr="submit"] {
+        background-color: #2eb82e90;
+        margin: 10px auto 0;
+    }
 
     &[attr="change"] {
         background-color: #bfbfbf;
@@ -188,7 +221,7 @@ export const ModalFormButton = styled.button`
 
     &[attr="delete"] {
         margin-top: 7px;
-        background-color: #cc000090;
+        background-color: #f1000075;
     }
 `
 

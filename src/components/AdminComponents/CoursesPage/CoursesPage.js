@@ -34,19 +34,20 @@ const validationSchema = Yup.object().shape({
         .min(15, 'Please use 15 characters or more'),
     specialty: Yup.string().required('Required').oneOf(specialties, 'Select a valid specialty'),
     courseSections: Yup.array()
-        .of(Yup.object())
+        .of(Yup.object().shape({
+        sectionId: Yup.string(),
+        sectionName: Yup.string()
+            .required('Required')
+            .min(5, 'Please use 5 characters or more'),
+        sectionDescription: Yup.string()
+            .required('Required')
+            .min(15, 'Please use 15 characters or more'),
+        sectionSummary: Yup.string()
+            .required('Required'),
+        // additionalMaterials: Yup.array()
+        //     .of(Yup.string()),
+        }))
         .required('Required'),
-    sectionId: Yup.string(),
-    sectionName: Yup.string()
-        .required('Required')
-        .min(5, 'Please use 5 characters or more'),
-    sectionDescription: Yup.string()
-        .required('Required')
-        .min(15, 'Please use 15 characters or more'),
-    sectionSummary: Yup.string()
-        .required(),
-    additionalMaterials: Yup.array()
-        .of(Yup.string()),
 });
 
 const style = {
@@ -61,22 +62,32 @@ const style = {
     p: 4,
 };
 
-const initialValues = { courseTitle: '', courseDescription: '', specialty: '', courseSections: {}, sectionId: '', sectionName: '', sectionDescription: '', additionalMaterials: {} };
+const sectionFormInitialValues = { sectionId: '', sectionName: '', sectionDescription: '', sectionSummary: '' };
+
+const initialValues = {
+    courseTitle: '',
+    courseDescription: '',
+    specialty: '',
+    courseSections: [
+    ],
+};
 
 export default function CoursesPage() {
     const [openModal, setOpenModal] = useState(false);
-    const [modalPage, setModalPage] = useState(1);
+    const [modalPage, setModalPage] = useState(0);
     const [sections, setSections] = useState([]);
     const [isFirstFormFieldValid, setIsFirstFormFieldValid] = useState(false);
     const [isSectionFormOpen, setIsSectionFormOpen] = useState(false);
-    const [sectionFormData, setSectionFormData] = useState(null); 
+    const [sectionFormData, setSectionFormData] = useState(null);
 
     const handleOpenModal = () => setOpenModal(true);
     
     const handleCloseModal = () => {
         setOpenModal(false);
+        setIsFirstFormFieldValid(false);
         setModalPage(0);
         setSections([]); 
+        setSectionFormData(null);
     };
 
     const nextModalPage = () => setModalPage(modalPage => modalPage + 1);
@@ -87,11 +98,6 @@ export default function CoursesPage() {
             return str;
         }
         return str.substring(0, (len - 5)) + '...';
-    }
-
-    const handleSubmit = (values) => {
-        console.log(values);
-        handleCloseModal();
     }
 
     const addSection = (sectionValues) => {
@@ -113,12 +119,8 @@ export default function CoursesPage() {
 
     const deleteSection = sectionId => {
         setSections((prevSections) => prevSections.filter((section) => section.sectionId !== sectionId));
-
     }
 
-
-    const sectionFormInitialValues = { sectionId: '', sectionName: '', sectionDescription: '', sectionSummary: '' };
- 
     return (
         <>
             <Box m={'20px'}
@@ -142,6 +144,7 @@ export default function CoursesPage() {
                     <Modal
                         open={openModal}
                         onClose={handleCloseModal}
+                        
                         aria-labelledby="modal-modal-title"
                     >
                         <Box sx={style}>
@@ -149,15 +152,28 @@ export default function CoursesPage() {
                             <Formik
                                 initialValues={initialValues}
                                 validationSchema={validationSchema}
-                                onSubmit={handleSubmit}
                                 validate={(values) => {
                                     firstValidationSchema
                                         .validate({ courseTitle: values.courseTitle, courseDescription: values.courseDescription, specialty: values.specialty }, { abortEarly: true })
                                         .then(() => setIsFirstFormFieldValid(true))
                                         .catch(() => setIsFirstFormFieldValid(false))
                                 }}>
-                                {({ isSubmitting, isValid }) => (
-                                    <Form style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }} >
+                                {({ values, handleReset }) => (
+                                    <Form
+                                        onSubmit={(e) => {
+                                            e.preventDefault();
+                                            const courseObject = {
+                                                courseTitle: values.courseTitle,
+                                                courseDescription: values.courseDescription,
+                                                specialty: values.specialty,
+                                                courseSections: [...sections]
+                                            }
+                                            console.log(courseObject);
+                                            handleCloseModal();
+                                            handleReset();
+                                        }}
+                                        style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+                                    >
                                         {modalPage === 0 && (
                                             <>
                                                 <div className={css.formInputContainer}>
@@ -182,7 +198,7 @@ export default function CoursesPage() {
                                                     <ErrorMessage name="courseDescription" render={msg => <CustomErrorMessage>{msg}</CustomErrorMessage>} />
                                                 </div>
                                                 <div className={css.formInputContainer}>
-                                                    <Field as={ModalSelectField} name="specialty" >
+                                                    <Field as={ModalSelectField} name="specialty">
                                                         <option disabled value=''> Select specialty</option>
                                                         <option value="Biology">Biology</option>
                                                         <option value="English">English</option>
@@ -230,43 +246,17 @@ export default function CoursesPage() {
 
                                                 {/* UPDATE SECTION */}
                                                 {sectionFormData && <SectionForm title={'Update the section'} initialValues={sectionFormData} onSave={addSection} onClose={() => { setIsSectionFormOpen(false); setSectionFormData(null) }} />}
-
-                                                {sections.length > 0 && (
-                                                    <ModalButtonsWrapper>
-                                                        <ModalPageButton type="button" onClick={prevModalPage}>
-                                                            <HiChevronLeft style={{ color: '#fff', width: '30px', height: '30px' }}/>
-                                                        </ModalPageButton>
-                                                        <ModalPageButton type="button" onClick={nextModalPage}>
-                                                            <HiChevronRight style={{ color: '#fff', width: '30px', height: '30px' }}/>
-                                                        </ModalPageButton>
-                                                    </ModalButtonsWrapper>
-                                                    // <ModalFormButton attr="save" type="submit">Save</ModalFormButton>
-                                                )}
-                                                </>
-                                            )}
-                                        {/* <div className={css.formInputContainer}>
-                                            <Field
-                                                type="text"
-                                                id="courseTitle"
-                                                name="courseTitle"
-                                                placeholder="Title"
-                                                className='addStudentFormInput'
-                                            />
-                                            <ErrorMessage name="courseTitle" component="div" className={css.errorMessage} />
-                                        </div>
-                                        <div className={css.formInputContainer}>
-                                            <Field
-                                                as='textarea'
-                                                type="text"
-                                                id="courseDescription"
-                                                name="courseDescription"
-                                                placeholder="Description"
-                                                className='addStudentFormTextarea'
-                                            />
-                                            <ErrorMessage name="courseDescription" component="div" className={css.errorMessage} />
-                                        </div> */}
-
-                                        {/* <button className='addStudentSubmitButton' disabled={isSubmitting || !isValid} type="submit">Submit</button> */}
+                                                
+                                                <ModalButtonsWrapper style={{justifyContent: 'left'}}>
+                                                    <ModalPageButton type="button" onClick={prevModalPage}>
+                                                        <HiChevronLeft style={{ color: '#fff', width: '30px', height: '30px' }}/>
+                                                    </ModalPageButton>
+                                                </ModalButtonsWrapper>
+                                                {/* {sections.length > 0 && <button className="addStudentSubmitButton" type="submit" >Submit</button>} */}
+                                                {sections.length > 0 && <button className="addStudentSubmitButton" type="submit" >Submit</button>}
+                                                
+                                            </>
+                                        )}
                                     </Form>
                                 )}
                             </Formik>
