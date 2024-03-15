@@ -169,9 +169,6 @@ export const ModalSectionItem = styled.li`
     }
 `
 
-
-// SectionForm
-
 export const ModalFormButtonsWrapper = styled.div`
     display: flex;
     justify-content: space-around;
@@ -231,4 +228,5 @@ export const SectionFormContainer = styled.div`
     box-shadow: 0px 0px 13px 1px rgba(173,171,173,1);
     padding: 15px;
     margin: 15px 0;
+    height: calc(100% - 50px)
 `

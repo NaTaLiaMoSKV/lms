@@ -1,7 +1,7 @@
 import { Field, ErrorMessage, useFormikContext } from 'formik';
 import { useEffect } from 'react';
 import * as Yup from 'yup';
-import css from '../StudentsPage/StudentsPage.css'
+import css from '../StudentsPage/StudentsPage.css';
 import { CustomErrorMessage, ModalFormButton, ModalFormButtonsWrapper, SectionFormContainer } from './CoursesPage.styled';
 
 const SectionForm = ({ title, onSave, onClose, initialValues }) => {
@@ -14,14 +14,15 @@ const SectionForm = ({ title, onSave, onClose, initialValues }) => {
         sectionSummary: Yup.string().required('Required'),
     });
 
-    useEffect(() => {
+   useEffect(() => {
         if (initialValues) {
-            setFieldValue('sectionId', initialValues.sectionId);
-            setFieldValue('sectionName', initialValues.sectionName);
-            setFieldValue('sectionDescription', initialValues.sectionDescription);
-            setFieldValue('sectionSummary', initialValues.sectionSummary);
+            setFieldValue('sectionId', initialValues.sectionId || ''); 
+            setFieldValue('sectionName', initialValues.sectionName || '');
+            setFieldValue('sectionDescription', initialValues.sectionDescription || '');
+            setFieldValue('sectionSummary', initialValues.sectionSummary || '');
         }
-    }, [initialValues, setFieldValue]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [setFieldValue]);
 
     const handleSave = () => {
         const sectionValues = {
@@ -35,8 +36,8 @@ const SectionForm = ({ title, onSave, onClose, initialValues }) => {
             .validate(sectionValues, { abortEarly: false })
             .then(() => {
                 onSave(sectionValues);
-            })
-        onClose();
+                onClose();
+            });
     };
 
     return (
@@ -51,7 +52,7 @@ const SectionForm = ({ title, onSave, onClose, initialValues }) => {
                 <ErrorMessage name="sectionDescription" render={msg => <CustomErrorMessage>{msg}</CustomErrorMessage>}/>
             </div>
             <div className={css.formInputContainer}>
-                <Field className='addStudentFormTextarea' as="textarea" id="sectionSummary" name="sectionSummary" placeholder="summary"/>
+                <Field className='sectionSummaryTextarea' as="textarea" id="sectionSummary" name="sectionSummary" placeholder="summary"/>
                 <ErrorMessage name="sectionSummary" render={msg => <CustomErrorMessage>{msg}</CustomErrorMessage>}/>
             </div>
             

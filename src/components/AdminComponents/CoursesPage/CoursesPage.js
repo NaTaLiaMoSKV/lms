@@ -1,11 +1,11 @@
-import { Box, Modal } from "@mui/material"
+import { useState } from "react"
+import { useNavigate } from "react-router-dom";
+import * as Yup from 'yup'
 import { v4 as uuidv4 } from 'uuid';
+import { Box, Modal } from "@mui/material"
+import { ErrorMessage, Field, Form, Formik } from "formik"
 import { IoMdAdd } from "react-icons/io"
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
-import { ErrorMessage, Field, Form, Formik } from "formik"
-// import { Form } from "react-router-dom"
-import * as Yup from 'yup'
-import { useState } from "react"
 
 import css from '../StudentsPage/StudentsPage.css'
 import { CourseCard, CourseCardList, CourseCardSubtitle, CourseCardText, CourseCardTextWrapper, CourseCardTitle, CoursesTitleContainer, CustomErrorMessage, ModalButtonsWrapper, ModalFormButton, ModalPageButton, ModalSectionItem, ModalSectionList, ModalSelectField } from "./CoursesPage.styled"
@@ -54,6 +54,7 @@ const style = {
     position: 'absolute',
     top: '50%',
     left: '50%',
+    maxHeight: '80%',
     transform: 'translate(-50%, -50%)',
     width: 400,
     bgcolor: 'background.paper',
@@ -79,6 +80,10 @@ export default function CoursesPage() {
     const [isFirstFormFieldValid, setIsFirstFormFieldValid] = useState(false);
     const [isSectionFormOpen, setIsSectionFormOpen] = useState(false);
     const [sectionFormData, setSectionFormData] = useState(null);
+    const navigate = useNavigate();
+
+    const nextModalPage = () => setModalPage(modalPage => modalPage + 1);
+    const prevModalPage = () => setModalPage(modalPage => modalPage - 1);
 
     const handleOpenModal = () => setOpenModal(true);
     
@@ -89,9 +94,6 @@ export default function CoursesPage() {
         setSections([]); 
         setSectionFormData(null);
     };
-
-    const nextModalPage = () => setModalPage(modalPage => modalPage + 1);
-    const prevModalPage = () => setModalPage(modalPage => modalPage - 1);
 
     const formatTextString = (str, len) => {
         if (str.length <= len) {
@@ -117,8 +119,13 @@ export default function CoursesPage() {
         setIsSectionFormOpen(false);
     };
 
-    const deleteSection = sectionId => {
+    const deleteSection = (sectionId) => {
         setSections((prevSections) => prevSections.filter((section) => section.sectionId !== sectionId));
+    }
+
+    const handleCourseCardClick = (courseId) => {
+        const selectedCourse = coursesData.find(course => course.id === courseId);
+        navigate(`/home/admin/courses/${courseId}`, { state: { selectedCourse } });
     }
 
     return (
@@ -252,7 +259,6 @@ export default function CoursesPage() {
                                                         <HiChevronLeft style={{ color: '#fff', width: '30px', height: '30px' }}/>
                                                     </ModalPageButton>
                                                 </ModalButtonsWrapper>
-                                                {/* {sections.length > 0 && <button className="addStudentSubmitButton" type="submit" >Submit</button>} */}
                                                 {sections.length > 0 && <button className="addStudentSubmitButton" type="submit" >Submit</button>}
                                                 
                                             </>
@@ -265,7 +271,7 @@ export default function CoursesPage() {
                 </CoursesTitleContainer>
                 <CourseCardList>
                     {coursesData.map(course => (
-                        <CourseCard key={course.id} $specialty={course.specialty} >
+                        <CourseCard key={course.id} $specialty={course.specialty} onClick={() => handleCourseCardClick(course.id)} >
                             <CourseCardTitle>{formatTextString(course.courseTitle, 50)}</CourseCardTitle>
                             <CourseCardSubtitle>{formatTextString(course.courseDescription, 60)}</CourseCardSubtitle>
                             <CourseCardTextWrapper>
@@ -273,16 +279,6 @@ export default function CoursesPage() {
                                 <CourseCardText>{formatTextString(course.specialty, 20)}</CourseCardText>
                             </CourseCardTextWrapper>
                             
-                            
-                            {/* <ul>
-                                {course.courseSections.map((section, index) => (
-                                    <li key={index}>
-                                        <p>{section.sectionName} {index + 1}</p>
-                                        <p>{section.sectionDescription}</p>
-                                        <p>{section.sectionSummary}</p>
-                                    </li>
-                                ))}
-                            </ul> */}
                         </CourseCard>
                     ))}
                 </CourseCardList>

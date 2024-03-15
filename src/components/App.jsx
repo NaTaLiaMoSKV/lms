@@ -18,11 +18,12 @@ export const App = () => {
           <Route index element={<WelcomePage />} />
           <Route path='auth' element={<AuthPage />} />
           <Route path='home/:userType' element={<PrivateRoute component={<HomePage />} />} >
-            <Route path='dashboard' element={<AdminDashboard section={'dashoboard'} />}></Route>
-            <Route path='courses' element={<AdminDashboard section={'courses'}/>}></Route>
-            <Route path='groups' element={<AdminDashboard section={'groups'}/>}></Route>
-            <Route path='students' element={<AdminDashboard section={'students'}/>}></Route>
-            <Route path='teachers' element={<AdminDashboard section={'teachers'}/>}></Route>
+            <Route path='dashboard' element={<AdminDashboard />}></Route>
+            <Route path='courses' element={<AdminDashboard  />}></Route>
+            <Route path='courses/:courseId' element={<AdminDashboard />}></Route>
+            <Route path='groups' element={<AdminDashboard />}></Route>
+            <Route path='students' element={<AdminDashboard />}></Route>
+            <Route path='teachers' element={<AdminDashboard />}></Route>
             
           </Route>
           <Route path='*' element={<RestrictedRoute component={WelcomePage} />} />

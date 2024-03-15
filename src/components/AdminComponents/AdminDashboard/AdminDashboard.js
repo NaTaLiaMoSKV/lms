@@ -4,51 +4,55 @@ import Header from "components/Header/Header";
 import StudentsPage from "../StudentsPage/StudentsPage";
 import TeachersPage from "../TeachersPage/TeachersPage";
 import CoursesPage from "../CoursesPage/CoursesPage";
-
-export default function AdminDashboard({ section }) {
+import Course from "../CoursesPage/Course/Course";
+export default function AdminDashboard( ) {
     const { pathname } = useLocation();
-    const { userType } = useParams();
+    // const { userType } = useParams();
+    const { userType, courseId } = useParams();
 
     return (
         <>
-            <div style={{ display: 'flex', width: '100vw', height: '100vh'}}>
+            <div style={{ display: 'flex', width: '100vw', height: '100vh', position: 'fixed'}}>
                 <AdminSidebar  />
-                <div className="content" style={{ backgroundColor: '#fafafa', flex: 1 }}>
+                <div className="content" style={{ backgroundColor: '#fafafa', flex: 1, overflowY: 'scroll' }}>
                     <Header />
                     {(() => {
                         switch (pathname) {
                             case `/home/${userType}/dashboard`:
                                 return (
-                                <>
-                                    {/* <Header /> */}
-                                    <h1>DASHBOARD</h1>
-                                </>
+                                    <>
+                                        <h1>DASHBOARD</h1>
+                                    </>
                                 );
                             case `/home/${userType}/courses`:
                                 return (
-                                <>
-                                    {/* <Header /> */}
-                                        {/* <h1>COURSE</h1> */}
+                                    <>
                                         <CoursesPage />
-                                </>
+                                    </>
+                                );
+                            case `/home/${userType}/courses/${courseId}`:
+                                return (
+                                    <>
+                                        <Course />
+                                    </>
                                 );
                             case `/home/${userType}/groups`:
                                 return (
-                                <>
-                                    <h1>GROUPS</h1>
-                                </>
+                                    <>
+                                        <h1>GROUPS</h1>
+                                    </>
                                 );
                             case `/home/${userType}/students`:
                                 return (
-                                <>
-                                    <StudentsPage />
-                                </>
+                                    <>
+                                        <StudentsPage />
+                                    </>
                                 );
                             case `/home/${userType}/teachers`:
                                 return (
-                                <>
-                                    <TeachersPage />
-                                </>
+                                    <>
+                                        <TeachersPage />
+                                    </>
                                 );
                             default:
                                 return null; 
