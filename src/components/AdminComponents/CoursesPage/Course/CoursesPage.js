@@ -7,12 +7,12 @@ import { ErrorMessage, Field,  Formik } from "formik"
 import { IoMdAdd } from "react-icons/io"
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 
-import { CourseCard, CourseCardList, CourseCardSubtitle, CourseCardText, CourseCardTextWrapper, CourseCardTitle, ModalButtonsWrapper, ModalPageButton, ModalSectionItem, ModalSectionList, ModalSelectField } from "./CoursesPage.styled"
+import { CourseCard, CourseCardList, CourseCardSubtitle, CourseCardText, CourseCardTextWrapper, CourseCardTitle, ModalButtonsWrapper, ModalPageButton, ModalSectionItem, ModalSectionList, ModalSelectField } from "../CoursesPage.styled"
 
-import coursesData from '../../../data/courses.json'
-import SectionForm from "./SectionForm";
+import coursesData from 'data/courses.json'
+import SectionForm from "../SectionForm";
 import { ActionFormButton, FormBox, FormContainer, FormErrorMessage, FormInput, FormSubmitButton, FormTextarea, OpenFormButton } from "styles/Form.styled";
-import { StyledBox } from "../AdminDashboard/AdminDashboard.styled";
+import { StyledBox } from "../../AdminDashboard/AdminDashboard.styled";
 
 const specialties = ['Biology', 'English', 'Computer Science']
 

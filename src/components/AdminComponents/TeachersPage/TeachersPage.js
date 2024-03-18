@@ -5,10 +5,10 @@ import { Modal } from '@mui/material';
 import { IoMdAdd } from "react-icons/io";
 
 import AdminTable from '../AdminTable/AdminTable';
-import teachersData from '../../../data/teachers.json'
-import teachersCss from './TeachersPage.module.css'
-import { FormBox, FormContainer, FormErrorMessage, FormInput, FormSubmitButton, OpenFormButton } from 'styles/Form.styled';
+import teachersData from 'data/teachers.json'
+import { FormBox, OpenFormButton } from 'styles/Form.styled';
 import { StyledBox } from '../AdminDashboard/AdminDashboard.styled';
+import TableForm from '../AdminTable/TableForm';
 
 const validationSchema = Yup.object().shape({
     name: Yup.string()
@@ -30,95 +30,9 @@ export default function TeachersPage() {
     const handleOpenModal = () => setOpenModal(true);
     const handleCloseModal = () => setOpenModal(false);
 
-    const specialtiesList = [
-        'Mathematics',
-        'Physics',
-        'Chemistry',
-        'English',
-        'Biology',
-    ];
-
-    const handleSubmit = (values) => {
-        const dropdown = document.querySelector('#specialtiesDropdown')
-        const checkedInputs = dropdown.querySelectorAll('input[type="checkbox"]:checked');
-        checkedInputs.forEach((input) => {
-            values.specialties.push(input.value);
-        });
-
-        const birthDateObject = new Date(values.date);
-        const currentDate = new Date();
-        const age = currentDate.getFullYear() - birthDateObject.getFullYear();
-        const currentDateTime = new Date().toString();
-
-        console.log(values)
-        console.log('Age:', age);
-        console.log('Registration date:', currentDateTime);
-        
-        // Add teacher data to file
-        handleCloseModal();
+    const saveTableForm = (values) => {
+        console.log(values);
     }
-
-    const teachersColumns = [
-        {
-            field: 'id',
-            headerName: 'ID',
-            flex: 0.5
-        },
-        {
-            field: 'name',
-            headerName: 'Name',
-            width: 180,
-            editable: true
-        },
-        {
-            field: 'email',
-            headerName: 'Email',
-            type: 'email',
-            width: 250,
-            align: 'left',
-            headerAlign: 'left',
-        },
-        {
-            field: 'age',
-            headerName: 'Age',
-            type: 'number',
-            width: '100',
-            align: 'left',
-            headerAlign: 'left',
-        },
-        {
-            field: 'specialty',
-            headerName: 'Specialty',
-            width: 150,
-            editable: true
-        },
-        {
-            field: 'startYear',
-            headerName: 'Start year',
-            type: 'number',
-            width: '100',
-            align: 'left',
-            headerAlign: 'left',
-        },
-        {
-            field: 'totalCourses',
-            headerName: 'Total courses',
-            type: 'number',
-            width: '100',
-            align: 'left',
-            headerAlign: 'left',
-            editable: true
-        },
-        {
-            field: 'currentCourses',
-            headerName: 'Current courses',
-            type: 'number',
-            width: '100',
-            align: 'left',
-            headerAlign: 'left',
-            editable: true
-        },
-    ];
 
     return (
         <StyledBox>
@@ -135,64 +49,19 @@ export default function TeachersPage() {
                     aria-labelledby="modal-modal-title"
                 >
                     <FormBox attr='400'>
-                        <h1>Add new teacher</h1>
                          <Formik
-                            initialValues={{ name: '', email: '', date: '', specialties: [] }}
+                            initialValues={{ name: '', email: '' }}
                             validationSchema={validationSchema}
-                            onSubmit={handleSubmit}
                         >
-                            {({ isSubmitting, isValid }) => (
-                                <FormContainer>
-                                    <div>
-                                        <FormInput
-                                            type="text"
-                                            id="name"
-                                            name="name"
-                                            placeholder="Name"
-                                        />
-                                        <FormErrorMessage name="name" component="div"/>
-                                    </div>
-                                    <div>
-                                        <FormInput
-                                            type="email"
-                                            id="email"
-                                            name="email"
-                                            placeholder="Email"
-                                        />
-                                        <FormErrorMessage name="email" component="div" />
-                                    </div>
-                                    <div>
-                                        <FormInput
-                                            type="date"
-                                            id="date"
-                                            name="date"
-                                            placeholder="Date"
-                                        />
-                                        <FormErrorMessage name="date" component="div" />
-                                    </div>
-                                    <details className={teachersCss.multipleSelect}>
-                                        <summary>Select specialties</summary>
-                                        <div  id='specialtiesDropdown' className={teachersCss.multipleSelectDropdown}>
-                                        {
-                                            specialtiesList.map((el, index) => (
-                                            <label key={index} >
-                                                <input type="checkbox" hidden name="select" value={el} />
-                                                <span className={teachersCss.content}>{el}</span>
-                                            </label>
-                                            ))
-                                        }
-                                        </div>
-                                    </details>
-
-                                    <FormSubmitButton disabled={isSubmitting || !isValid} type="submit">Submit</FormSubmitButton>
-                                </FormContainer>
-                            )}
+                            <TableForm title='Add new teacher' $initialvalues={{ name: '', email: '' }} onSave={saveTableForm} onClose={() => setOpenModal(false)} />
                         </Formik>
                     </FormBox>
                 </Modal>
             </div>
 
-            <AdminTable data={teachersData} columns={teachersColumns} />
+            <div style={{ maxHeight: '400px', overflowY: 'scroll' }}>
+                <AdminTable data={teachersData} />
+            </div>
         </StyledBox>
     );
 }

@@ -28,7 +28,7 @@ export const FormBox = styled(Box)`
 `
 
 export const OpenFormButton = styled.button`
-     width: 170px;
+    width: 170px;
     display: flex;
     align-items: center;
     justify-content: center;

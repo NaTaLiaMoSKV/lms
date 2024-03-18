@@ -2,7 +2,7 @@ import { useLocation, useParams } from "react-router-dom";
 import AdminSidebar from "components/AdminComponents/AdminSidebar/AdminSidebar";
 import StudentsPage from "../StudentsPage/StudentsPage";
 import TeachersPage from "../TeachersPage/TeachersPage";
-import CoursesPage from "../CoursesPage/CoursesPage";
+import CoursesPage from "../CoursesPage/Course/CoursesPage";
 import Course from "../CoursesPage/Course/Course";
 import GroupsPage from "../GroupsPage/GroupsPage";
 import { Dashboard, DashboardContent } from "./AdminDashboard.styled";

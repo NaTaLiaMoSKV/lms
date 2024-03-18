@@ -20,7 +20,7 @@ const SectionForm = ({ title, onSave, onClose, initialValues }) => {
             setFieldValue('sectionName', initialValues.sectionName || '');
             setFieldValue('sectionDescription', initialValues.sectionDescription || '');
             setFieldValue('sectionSummary', initialValues.sectionSummary || '');
-        }
+        };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [setFieldValue]);
 
