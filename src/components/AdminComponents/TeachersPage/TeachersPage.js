@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import * as Yup from 'yup'
-import Box from '@mui/material/Box';
-import { ErrorMessage, Field, Form, Formik } from 'formik';
+import {Formik } from 'formik';
 import { Modal } from '@mui/material';
 import { IoMdAdd } from "react-icons/io";
 
 import AdminTable from '../AdminTable/AdminTable';
 import teachersData from '../../../data/teachers.json'
-import css from '../StudentsPage/StudentsPage.css'
 import teachersCss from './TeachersPage.module.css'
+import { FormBox, FormContainer, FormErrorMessage, FormInput, FormSubmitButton, OpenFormButton } from 'styles/Form.styled';
+import { StyledBox } from '../AdminDashboard/AdminDashboard.styled';
 
 const validationSchema = Yup.object().shape({
     name: Yup.string()
@@ -23,18 +23,6 @@ const validationSchema = Yup.object().shape({
         .max(new Date('2010-12-31'), 'Date must be before 2010'),
     specialties: Yup.array()
 });
-
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '1.5px solid #000',
-    boxShadow: 24,
-    p: 4,
-};
 
 export default function TeachersPage() {
     const [openModal, setOpenModal] = useState(false);
@@ -133,69 +121,54 @@ export default function TeachersPage() {
     ];
 
     return (
-        <Box m={'20px'}
-            sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                height: '100vh',
-                "& .MuiButtonBase-root": {
-                    color: "#191d23",
-                },
-                margin: 0,
-            }}
-        >
-            <div className='studentsTitleContainer'>
+        <StyledBox>
+            <div>
                 <h1>Teachers</h1>
-                <button onClick={handleOpenModal} className='addButton'>
+                <OpenFormButton onClick={handleOpenModal}>
                     <IoMdAdd style={{width: '20px', height: '20px', marginRight: '5px'}}/>
                     Add new teacher
-                </button>
+                </OpenFormButton>
 
                 <Modal
                     open={openModal}
                     onClose={handleCloseModal}
                     aria-labelledby="modal-modal-title"
                 >
-                    <Box sx={style}>
-                        <h1 style={{ marginBottom: '20px', textAlign: 'center' }}>Add new teacher</h1>
+                    <FormBox attr='400'>
+                        <h1>Add new teacher</h1>
                          <Formik
                             initialValues={{ name: '', email: '', date: '', specialties: [] }}
                             validationSchema={validationSchema}
                             onSubmit={handleSubmit}
                         >
                             {({ isSubmitting, isValid }) => (
-                                <Form style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}} >
-                                    <div className={css.formInputContainer}>
-                                        <Field
+                                <FormContainer>
+                                    <div>
+                                        <FormInput
                                             type="text"
                                             id="name"
                                             name="name"
                                             placeholder="Name"
-                                            className='addStudentFormInput'
                                         />
-                                        <ErrorMessage name="name" component="div" className={css.errorMessage} />
+                                        <FormErrorMessage name="name" component="div"/>
                                     </div>
-
-                                    <div className={css.formInputContainer}>
-                                        <Field
+                                    <div>
+                                        <FormInput
                                             type="email"
                                             id="email"
                                             name="email"
                                             placeholder="Email"
-                                            className='addStudentFormInput'
                                         />
-                                        <ErrorMessage name="email" component="div" className={css.errorMessage} />
+                                        <FormErrorMessage name="email" component="div" />
                                     </div>
-
-                                    <div className={css.formInputContainer}>
-                                        <Field
+                                    <div>
+                                        <FormInput
                                             type="date"
                                             id="date"
                                             name="date"
                                             placeholder="Date"
-                                            className='addStudentFormInput'
                                         />
-                                        <ErrorMessage name="date" component="div" className={css.errorMessage} />
+                                        <FormErrorMessage name="date" component="div" />
                                     </div>
                                     <details className={teachersCss.multipleSelect}>
                                         <summary>Select specialties</summary>
@@ -211,15 +184,15 @@ export default function TeachersPage() {
                                         </div>
                                     </details>
 
-                                    <button className='addStudentSubmitButton' disabled={isSubmitting || !isValid} type="submit">Submit</button>
-                                </Form>
+                                    <FormSubmitButton disabled={isSubmitting || !isValid} type="submit">Submit</FormSubmitButton>
+                                </FormContainer>
                             )}
                         </Formik>
-                    </Box>
+                    </FormBox>
                 </Modal>
             </div>
 
             <AdminTable data={teachersData} columns={teachersColumns} />
-        </Box>
+        </StyledBox>
     );
 }

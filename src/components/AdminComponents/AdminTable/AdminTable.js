@@ -5,7 +5,6 @@ import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from '@mui/icons-material/Close';
 import { GridRowModes, DataGrid, GridActionsCellItem, GridRowEditStopReasons, GridToolbar } from '@mui/x-data-grid';
 
-
 export default function AdminTable({ data, columns }) {
     const [rows, setRows] = useState(data);
     const [rowModesModel, setRowModesModel] = useState({});
@@ -92,8 +91,6 @@ export default function AdminTable({ data, columns }) {
     const handleRowModesModelChange = (newRowModesModel) => {
         setRowModesModel(newRowModesModel);
     };
-    
-    
 
     return (
         <DataGrid
@@ -107,7 +104,7 @@ export default function AdminTable({ data, columns }) {
                 border: 1,
                 flex: 1,
                 borderColor: '#57707a',
-                margin: '10px 30px 15px'
+                marginTop: '20px'
             }}
             slots={{
                 toolbar: GridToolbar, 

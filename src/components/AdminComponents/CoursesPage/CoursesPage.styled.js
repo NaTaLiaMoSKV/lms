@@ -1,12 +1,5 @@
 import { styled } from "styled-components";
 
-export const CoursesTitleContainer = styled.div `
-    margin: 15px 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-`
-
 export const CourseCardList = styled.ul`
     display: flex;
     flex-wrap: wrap;
@@ -98,9 +91,8 @@ export const ModalPageButton = styled.button`
 export const ModalSelectField = styled.select`
     border: 1px solid black;
     background-color: none;
-    width: 350px;
+    width: 366px;
     padding: 8px;
-    margin-bottom: 10px;
     border: none;
     outline: none;
     font-family: 'Roboto', sans-serif;
@@ -115,13 +107,6 @@ export const ModalSelectField = styled.select`
         font-size: 14px;
         letter-spacing: 0.08em;
     }
-`
-
-export const CustomErrorMessage = styled.div`
-    color: #282828;
-    font-family: 'Roboto', sans-serif;
-    letter-spacing: 0.04em;
-    font-size: 14px;
 `
 
 export const ModalSectionList = styled.ul`
@@ -177,52 +162,10 @@ export const ModalFormButtonsWrapper = styled.div`
     margin-bottom: 15px;
 `
 
-export const ModalFormButton = styled.button`
-    width: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    background-color: #e4e4e4;
-    text-decoration: none;
-    color: inherit;
-    font-family: "Roboto","Helvetica","Arial",sans-serif;
-    font-weight: 500;
-    font-size: 0.8125rem;
-    line-height: 1.75;
-    letter-spacing: 0.02857em;
-    text-transform: uppercase;
-    padding: 6px 8px;
-    border-radius: 10px;
-    color: #191d23;
-    transition: all 0.3s ease;
-
-    &:hover {
-        -webkit-box-shadow: 0px 0px 3px 1px rgba(173,171,173,1);
-        -moz-box-shadow: 0px 0px 3px 1px rgba(173,171,173,1);
-        box-shadow: 0px 0px 3px 1px rgba(173,171,173,1);
-    }
-
-    &[attr="save"] {
-        background-color: #2eb82e90;
-    }
-    
-    &[attr="submit"] {
-        background-color: #2eb82e90;
-        margin: 10px auto 0;
-    }
-
-    &[attr="change"] {
-        background-color: #bfbfbf;
-    }
-
-    &[attr="delete"] {
-        margin-top: 7px;
-        background-color: #f1000075;
-    }
-`
-
 export const SectionFormContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
     -webkit-box-shadow: 0px 0px 13px 1px rgba(173,171,173,1);
     -moz-box-shadow: 0px 0px 13px 1px rgba(173,171,173,1);
     box-shadow: 0px 0px 13px 1px rgba(173,171,173,1);

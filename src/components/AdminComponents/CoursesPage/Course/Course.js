@@ -2,33 +2,18 @@ import { useLocation, useParams } from "react-router-dom"
 import { useEffect, useState } from "react";
 import * as Yup from 'yup';
 import { v4 as uuidv4 } from 'uuid';
-import { Box, Modal } from "@mui/material";
+import { Modal } from "@mui/material";
 import { ErrorMessage, Field, Formik } from "formik";
 import { IoMdAdd } from "react-icons/io";
 import { GoArrowLeft } from "react-icons/go";
 import { MdDelete } from "react-icons/md";
 import { FaPencil } from "react-icons/fa6";
 
-import { CourseContainer, CourseFormInput, CourseFormTextarea, CourseSectionItem, CourseSelectModal, ModalSectionWrapper, ReturnNavLink, ShowSectionFormButton } from "./Course.styled";
+import { CourseContainer, CourseSectionItem, ModalSectionWrapper, ReturnNavLink, ShowSectionFormButton } from "./Course.styled";
 import SectionForm from "../SectionForm";
-
-import { CustomErrorMessage } from "../CoursesPage.styled";
-import css from '../../StudentsPage/StudentsPage.css'
+import { FormBox, FormContainer, FormErrorMessage, FormInput, FormSelect, FormSubmitButton, FormTextarea, OpenFormButton } from "styles/Form.styled";
 
 const specialties = ['Biology', 'English', 'Computer Science'];
-
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    height: '80%',
-    bgcolor: 'background.paper',
-    border: '1.5px solid #000',
-    boxShadow: 24,
-    p: 4,
-};
 
 const validationSchema = Yup.object().shape({
     courseTitle: Yup.string()
@@ -135,43 +120,43 @@ export default function Course() {
                 }}
             >
                 {({ values, handleSubmit, isValid }) => (
-                    <form onSubmit={handleSubmit}>
-                        <div className={css.formInputContainer}>
-                            <CourseFormInput
+                    <FormContainer onSubmit={handleSubmit}>
+                        <div>
+                            <FormInput
                                 type="text"
                                 value={values.courseTitle}
                                 id="courseTitle"
                                 name="courseTitle"
                                 placeholder="Title"
                             />
-                            <ErrorMessage name="courseTitle" render={msg => <CustomErrorMessage>{msg}</CustomErrorMessage>} />
+                            <ErrorMessage name="courseTitle" render={msg => <FormErrorMessage>{msg}</FormErrorMessage>} />
                         </div>
-                        <div className={css.formInputContainer}>
+                        <div>
                             <Field
-                                as={CourseFormTextarea}
+                                as={FormTextarea}
                                 type="text"
                                 value={values.courseDescription}
                                 id="courseDescription"
                                 name="courseDescription"
                                 placeholder="Description"
                             />
-                            <ErrorMessage name="courseDescription" render={msg => <CustomErrorMessage>{msg}</CustomErrorMessage>} />
+                            <ErrorMessage name="courseDescription" render={msg => <FormErrorMessage>{msg}</FormErrorMessage>} />
                         </div>
-                        <div className={css.formInputContainer}>
-                            <Field as={CourseSelectModal}
+                        <div>
+                            <Field as={FormSelect}
                                 value={values.specialty} name="specialty">
                                 <option disabled value=''> Select specialty</option>
                                 <option value="Biology">Biology</option>
                                 <option value="English">English</option>
                                 <option value="Computer Science">Computer Science</option>
                             </Field>
-                            <ErrorMessage name="specialty" render={msg => <CustomErrorMessage>{msg}</CustomErrorMessage>} />
+                            <ErrorMessage name="specialty" render={msg => <FormErrorMessage>{msg}</FormErrorMessage>} />
                         </div>
-                        <hr style={{ marginTop: '20px', marginBottom: '20px', border: '1px solid gray' }} />
-                        <button type='button' onClick={(e) => handleOpenModal(e)} className='addButton' style={{ marginBottom: '15px' }}>
+                        <hr style={{ marginTop: '20px', marginBottom: '20px', border: '1px solid grey' }} />
+                        <OpenFormButton type='button' onClick={(e) => handleOpenModal(e)} style={{ marginBottom: '15px' }}>
                             <IoMdAdd style={{width: '20px', height: '20px', marginRight: '5px'}}/>
                             Add new section
-                        </button>
+                        </OpenFormButton>
 
                         {/* SECTIONS */}
                         <ul>
@@ -192,9 +177,9 @@ export default function Course() {
                                     {/* UPDATE SECTION */}
                                     {isSectionFormOpen && currentSection && currentSection.sectionId === section.sectionId && (
                                         <Modal open={openModal} onClose={handleCloseModal} aria-labelledby="modal-modal-title" >
-                                            <Box sx={style}>
+                                            <FormBox attr='400'>
                                                 <SectionForm title={'Update the section'} initialValues={section} onSave={addSection} onClose={() => { setIsSectionFormOpen(false); setCurrentSection(null) }} />
-                                            </Box>
+                                            </FormBox>
                                         </Modal>
                                     )}
                                 </CourseSectionItem>
@@ -205,14 +190,14 @@ export default function Course() {
                         {/* ADD SECTION */}
                         {isSectionFormOpen && !currentSection && (
                             <Modal open={openModal} onClose={handleCloseModal} aria-labelledby="modal-modal-title" >
-                                <Box sx={style}>
+                                <FormBox attr='400'>
                                     <SectionForm title={'Add new section'} initialValues={{ sectionId: '', sectionName: '', sectionDescription: '', sectionSummary: '' }} onSave={addSection} onClose={() => setIsSectionFormOpen(false)} />
-                                </Box>
+                                </FormBox>
                             </Modal>
                         )}
                         
-                        {isValid && sections.length > 0 && <button type="submit" className="addStudentSubmitButton" style={{ marginTop: '10px' }}>Save</button>}
-                    </form>
+                        {isValid && sections.length > 0 && <FormSubmitButton type="submit">Save</FormSubmitButton>}
+                    </FormContainer>
                 )}
             </Formik>
         </CourseContainer>

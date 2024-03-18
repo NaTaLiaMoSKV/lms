@@ -1,14 +1,13 @@
 import { useState } from 'react';
 import * as Yup from 'yup'
-import Box from '@mui/material/Box';
-import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { Formik } from 'formik';
 import { Modal } from '@mui/material';
 import { IoMdAdd } from "react-icons/io";
 
 import AdminTable from '../AdminTable/AdminTable';
 import studentsData from '../../../data/students.json'
-import css from './StudentsPage.css'
-
+import { FormBox, FormContainer, FormErrorMessage, FormInput, FormSubmitButton, OpenFormButton } from 'styles/Form.styled';
+import { StyledBox } from '../AdminDashboard/AdminDashboard.styled';
 
 const validationSchema = Yup.object().shape({
     name: Yup.string()
@@ -22,18 +21,6 @@ const validationSchema = Yup.object().shape({
         .min('1925-01-01', 'Date must be after 1925')
         .max(new Date('2010-12-31'), 'Date must be before 2010'),
 });
-
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '1.5px solid #000',
-    boxShadow: 24,
-    p: 4,
-};
 
 export default function StudentsPage() {
     const [openModal, setOpenModal] = useState(false);
@@ -106,82 +93,63 @@ export default function StudentsPage() {
     ];
 
     return (
-        <Box m={'20px'}
-            sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                height: '100vh',
-                "& .MuiButtonBase-root": {
-                    color: "#191d23",
-                },
-                margin: 0,
-            }}
-        >
-            <div className='studentsTitleContainer'>
+        <StyledBox>
+            <div>
                 <h1>Students</h1>
-                <button onClick={handleOpenModal} className='addButton'>
+                <OpenFormButton onClick={handleOpenModal}>
                     <IoMdAdd style={{width: '20px', height: '20px', marginRight: '5px'}}/>
                     Add new student
-                </button>
+                </OpenFormButton>
 
                 <Modal
                     open={openModal}
                     onClose={handleCloseModal}
                     aria-labelledby="modal-modal-title"
                 >
-                    <Box sx={style}>
-                        <h1 style={{marginBottom: '20px', textAlign: 'center'}}>Add new student</h1>
+                    <FormBox attr='400'>
+                        <h1>Add new student</h1>
                          <Formik
                             initialValues={{ name: '', email: '', date: '' }}
                             validationSchema={validationSchema}
                             onSubmit={handleSubmit}
                         >
-                            {/* {({ isSubmitting, isValid }) => ( */}
-                                <Form style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}} >
-                                    <div className={css.formInputContainer}>
-                                        <Field
-                                            type="text"
-                                            id="name"
-                                            name="name"
-                                            placeholder="Name"
-                                            className='addStudentFormInput'
-                                        />
-                                        <ErrorMessage name="name" component="div" className={css.errorMessage} />
-                                    </div>
-
-                                    <div className={css.formInputContainer}>
-                                        <Field
-                                            type="email"
-                                            id="email"
-                                            name="email"
-                                            placeholder="Email"
-                                            className='addStudentFormInput'
-                                        />
-                                        <ErrorMessage name="email" component="div" className={css.errorMessage} />
-                                    </div>
-
-                                    <div className={css.formInputContainer}>
-                                        <Field
-                                            type="date"
-                                            id="date"
-                                            name="date"
-                                            placeholder="Date"
-                                            className='addStudentFormInput'
-                                        />
-                                        <ErrorMessage name="date" component="div" className={css.errorMessage} />
-                                    </div>
-
-                                    <button className='addStudentSubmitButton' type="submit">Submit</button>
-                                    {/* <button className='addStudentSubmitButton' disabled={isSubmitting || !isValid} type="submit">Submit</button> */}
-                                </Form>
-                            {/* )} */}
+                            <FormContainer>
+                                <div>
+                                    <FormInput
+                                        type="text"
+                                        id="name"
+                                        name="name"
+                                        placeholder="Name"
+                                    />
+                                    <FormErrorMessage name="name" component="div"/>
+                                </div>
+                                <div>
+                                    <FormInput
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        placeholder="Email"
+                                    />
+                                    <FormErrorMessage name="email" component="div" />
+                                </div>
+                                <div>
+                                    <FormInput
+                                        type="date"
+                                        id="date"
+                                        name="date"
+                                        placeholder="Date"
+                                    />
+                                    <FormErrorMessage name="date" component="div"/>
+                                </div>
+                                <FormSubmitButton type="submit">Submit</FormSubmitButton>
+                            </FormContainer>
                         </Formik>
-                    </Box>
+                    </FormBox>
                 </Modal>
             </div>
 
             <AdminTable data={studentsData} columns={studentsColumns} />
-        </Box>
+        </StyledBox>
         
     );
 }

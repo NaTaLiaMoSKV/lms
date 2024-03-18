@@ -50,7 +50,7 @@ export default function AuthForm() {
     return (
         <div className={css.formContainer}>
             <form validate={formik.validate} onSubmit={formik.handleSubmit} className={css.form}>
-                <div className={css.formInputContainer}>
+                <div >
                     <input
                         id="name"
                         className="authFormInput"
@@ -63,7 +63,7 @@ export default function AuthForm() {
                     {formik.errors.name ? <div className={css.errorMessage}>{formik.errors.name}</div> : null}
                 </div>
 
-                <div className={css.formInputContainer}>
+                <div >
                     <input
                         id="email"
                         className="authFormInput"
@@ -76,7 +76,7 @@ export default function AuthForm() {
                     {formik.errors.email ? <div className={css.errorMessage}>{formik.errors.email}</div> : null}
                 </div>
 
-                <div className={css.formInputContainer}>
+                <div >
                     <input
                         id="password"
                         className="authFormInput"

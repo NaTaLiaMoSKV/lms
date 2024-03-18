@@ -1,8 +1,8 @@
-import { Field, ErrorMessage, useFormikContext } from 'formik';
+import { ErrorMessage, useFormikContext } from 'formik';
 import { useEffect } from 'react';
 import * as Yup from 'yup';
-import css from '../StudentsPage/StudentsPage.css';
-import { CustomErrorMessage, ModalFormButton, ModalFormButtonsWrapper, SectionFormContainer } from './CoursesPage.styled';
+import { ModalFormButtonsWrapper, SectionFormContainer } from './CoursesPage.styled';
+import { ActionFormButton, FormErrorMessage, FormInput, FormTextarea } from 'styles/Form.styled';
 
 const SectionForm = ({ title, onSave, onClose, initialValues }) => {
     const { values, setFieldValue } = useFormikContext();
@@ -43,22 +43,22 @@ const SectionForm = ({ title, onSave, onClose, initialValues }) => {
     return (
         <SectionFormContainer>
             <h2 style={{ textAlign: 'center' }}>{title}</h2>
-            <div className={css.formInputContainer}>
-                <Field className='addStudentFormInput' type="text" id="sectionName" name="sectionName" placeholder="title"/>
-                <ErrorMessage name="sectionName" render={msg => <CustomErrorMessage>{msg}</CustomErrorMessage>}/>
+            <div>
+                <FormInput type="text" id="sectionName" name="sectionName" placeholder="title"/>
+                <ErrorMessage name="sectionName" render={msg => <FormErrorMessage>{msg}</FormErrorMessage>}/>
             </div>
-            <div className={css.formInputContainer}>
-                <Field className='addStudentFormTextarea' as="textarea" id="sectionDescription" name="sectionDescription" placeholder="description"/>
-                <ErrorMessage name="sectionDescription" render={msg => <CustomErrorMessage>{msg}</CustomErrorMessage>}/>
+            <div>
+                <FormTextarea as="textarea" id="sectionDescription" name="sectionDescription" placeholder="description"/>
+                <ErrorMessage name="sectionDescription" render={msg => <FormErrorMessage>{msg}</FormErrorMessage>}/>
             </div>
-            <div className={css.formInputContainer}>
-                <Field className='sectionSummaryTextarea' as="textarea" id="sectionSummary" name="sectionSummary" placeholder="summary"/>
-                <ErrorMessage name="sectionSummary" render={msg => <CustomErrorMessage>{msg}</CustomErrorMessage>}/>
+            <div >
+                <FormTextarea attr='summary' as="textarea" id="sectionSummary" name="sectionSummary" placeholder="summary"/>
+                <ErrorMessage name="sectionSummary" render={msg => <FormErrorMessage>{msg}</FormErrorMessage>}/>
             </div>
             
             <ModalFormButtonsWrapper>
-                <ModalFormButton attr="save" type="button" onClick={handleSave} className='addButton'>Save</ModalFormButton>
-                <ModalFormButton type="button" onClick={onClose} className='addButton'>Cancel</ModalFormButton>
+                <ActionFormButton attr="save" type="button" onClick={handleSave} className='addButton'>Save</ActionFormButton>
+                <ActionFormButton type="button" onClick={onClose} className='addButton'>Cancel</ActionFormButton>
             </ModalFormButtonsWrapper>
         </SectionFormContainer>
     );

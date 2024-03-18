@@ -42,10 +42,9 @@ export const ShowSectionFormButton = styled.button`
     height: 30px;
     
     & svg {
-        color: grey;
-        transiton: color 0.3s linear;
+        color: gray;
+        transiton: color 250ms linear;
     }
-
 
     & svg:hover,
     & svg:focus {
